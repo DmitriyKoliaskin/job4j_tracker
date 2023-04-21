@@ -16,6 +16,6 @@ public class StubInput implements Input {
 
     @Override
     public int askInt(String question) {
-        return Integer.parseInt(question);
+        return Integer.parseInt(askStr(question));
     }
 }
