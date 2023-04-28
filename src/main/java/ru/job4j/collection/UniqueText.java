@@ -16,6 +16,7 @@ public class UniqueText {
         for (var value : text) {
             if (!hashSet.contains(value)) {
              rsl = false;
+             break;
             }
         }
         return rsl;
