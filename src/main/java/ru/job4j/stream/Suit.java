@@ -11,8 +11,8 @@ enum Value {
 }
 
 class Card {
-    private Suit suit;
-    private Value value;
+    private final Suit suit;
+    private final Value value;
 
     public Card(Suit suit, Value value) {
         this.suit = suit;
@@ -20,11 +20,16 @@ class Card {
     }
 
     public static void main(String[] args) {
-        Suit[] suits = Suit.values();
-        Value[] values = Value.values();
-        Stream.of(suits)
-                .flatMap(suit -> Stream.of(values)
-                        .map(value -> suit + " " + value))
+        Stream.of(Suit.values())
+                .flatMap(suit -> Stream.of(Value.values())
+                        .map(value -> new Card(suit, value)))
                 .forEach(System.out::println);
+    }
+
+    @Override
+    public String toString() {
+        return suit
+                + " "
+                + value;
     }
 }
